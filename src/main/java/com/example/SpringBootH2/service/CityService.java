@@ -8,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * CityService contains the implementation of the findAll() and findById() methods. We use Spring JdbcTemplate to execute SQL code.
+ */
+
+@SuppressWarnings("ALL")
 @Service
 public class CityService implements ICityService {
 
@@ -15,18 +20,14 @@ public class CityService implements ICityService {
     private JdbcTemplate jtm;
 
     @Override
-    public List<City> findAll() {
-
+    public List findAll() {
         String sql = "SELECT * FROM CITIES";
-
         return jtm.query(sql, new BeanPropertyRowMapper(City.class));
     }
 
     @Override
     public City findById(Long id) {
-
         String sql = "SELECT * FROM CITIES WHERE ID=?";
-        //jdbcTemplate.queryForObject("select * from student_id = ?", studentRowMapper, studentId);
         return (City) jtm.queryForObject(sql, new BeanPropertyRowMapper(City.class), id);
     }
 }

@@ -9,6 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * This is the controller class for the Spring Boot RESTful application.
+ * The @RestController annotation creates a RESTful controller.
+ * While the traditional MVC controller uses ModelAndView, the RESTful controller simply returns the object and the object data
+ * is written directly to the HTTP response in JSON or XML format.
+ */
+
 @RestController
 public class MyController {
 
@@ -22,13 +29,11 @@ public class MyController {
 
     @RequestMapping("/cities")
     public List<City> findCities() {
-
         return cityService.findAll();
     }
 
     @RequestMapping("/cities/{userId}")
     public City findCity(@PathVariable Long userId) {
-
         return cityService.findById(userId);
     }
 }
