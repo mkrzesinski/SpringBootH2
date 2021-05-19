@@ -1,14 +1,15 @@
 server:
-  port: 8086
-  context-path: /rest
+  port: 8086                                  #set port, if not default 8080 is set
+  servlet:
+    context-path: /mkrzesi                    #set context path to different than default '/'
 
 spring:
   main:
-    banner-mode: "off"
+    banner-mode: "off"                        #mode used to display the banner when the application runs.
   datasource:
-    platform: h2
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:mem:test;MODE=PostgreSQL
+    platform: h2                              #platform to use in the DDL or DML scripts (such as schema-${platform}.sql or data-${platform}.sql).
+    driverClassName: org.h2.Driver            #fully qualified name of the JDBC driver. Auto-detected based on the URL by default.
+    url: jdbc:h2:mem:test;MODE=PostgreSQL     #JDBC URL of the database. We set H2 to use PostgreSQL compatibility mode
 
 logging:
   level:
